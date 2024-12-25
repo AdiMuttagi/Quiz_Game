@@ -1,3 +1,4 @@
+
 #Main Menu Function
 def main_menu():
     print("Welcome to the Quiz Game!")
@@ -99,8 +100,10 @@ def general_knowledge_quiz():
         else:
             print(f"Wrong! The correct answer is {q['answer']}")
     print(f"Quiz Complete! Your final score is {score}/{len(questions)}")
-    print("Returning to Main Menu...")
-    main_menu()  # Return to main menu
+
+
+
+
 
 
 #Sports Quiz Function:
@@ -183,27 +186,98 @@ def sports_quiz():
         else:
             print(f"Wrong! The correct answer is {q['answer']}")
     print(f"Quiz Complete! Your final score is {score}/{len(questions)}")
-    print("Returning to Main Menu...")
 
-    main_menu()  # Return to main menu
 
+
+#Science Quiz Function:
 def science_quiz():
     print("Starting Science Quiz...")
     questions = [
-
+        {
+        "question": "What is the most abundant gas in Earth's atmosphere",
+        "options": ["A. Oxygen", "B. Nitrogen", "C. Carbon Dioxide", "D. Hydrogen"],
+        "answer": "B"
+        },
+        {
+        "question": "what is the chemical symbol for gold?",
+        "options": ["A. Go", "B. Au", "C. Ag", "D. Gd"],
+        "answer": "B"
+        },
+        {
+        "question": "Which planet has the most moons?",
+        "options": ["A. Jupiter", "B. Saturn", "C. Neptune", "D. Uranus"],
+        "answer": "B"
+        },
+        {
+        "question": "Which part of the cell contains the genetic material?",
+        "options": ["A. Cytoplasm", "B. Ribosome", "C. Nucleus", "D. Mitochondria"],
+        "answer": "C"
+        },
+        {
+        "question": "What is the process of plants making food using sunlight called?",
+        "options": ["A. Respiration", "B. Photosynthesis", "C. Fermentation", "D. Digestion"],
+        "answer": "B"
+        },
+        {
+        "question": "What type of rock is formed from cooled lava?",
+        "options": ["A. Sedimentary", "B. Metamorphic", "C. Igneous", "D. Fossiliferous"],
+        "answer": "C"
+        },
+        {
+        "question": "Which of these elements is NOT a noble gas?",
+        "options": ["A. Helium", "B. Neon", "C. Argon", "D. Hydrogen"],
+        "answer": "D"
+        },
+        {
+        "question": "What is the SI unit of force?",
+        "options": ["A. Newton", "B. Joule", "C. Pascal", "D. Watt"],
+        "answer": "A"
+       },
+       {
+        "question": "Who is credited with developing the theory of relativity?",
+        "options": ["A. Isaac Newton", "B. Albert Einstein", "C. Galileo Galilei", "D. Nikola Tesla"],
+        "answer": "B"
+      },
+      {
+        "question": "Which organ in the human body is responsible for detoxifying chemicals and metabolizing drugs?",
+        "options": ["A. Liver", "B. Kidney", "C. Pancreas", "D. Spleen"],
+        "answer": "A"
+        },
 
     ]
 
+    score = 0
+
+    for q in questions:
+        print(q["question"])
+        for option in q["options"]:
+            print(option)
+
+        while True:
+            try:
+                user_answer = input("Your answer (A/B/C/D): ").strip().upper() #Removes any leading or trailing spaces, and converts the string into uppercase.
+
+                if user_answer in ["A", "B", "C", "D"]: #Check if the input is valid
+                    break # Valid input break the loop
+                else:
+                    print("Invalid choice. Please select A, B, C or D.")
+            except ValueError:
+                print("Please enter a valid option (A, B, C, or D)")
+
+        if user_answer == q["answer"]:
+            print("Correct!")
+            score += 1 #Increment score for correct answer
+        else:
+            print(f"Wrong! The correct answer is {q['answer']}")
+    print(f"Quiz Complete! Your final score is {score}/{len(questions)}")
 
 
 
 
 
-    main_menu()  # Return to main menu
-
-
+#Main Program Loop
 if __name__ == "__main__":
-    while True:  # Main program loop
+    while True:  
         quiz_choice = main_menu()
 
         if quiz_choice == 1:
