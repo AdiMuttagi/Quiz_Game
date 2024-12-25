@@ -1,29 +1,24 @@
-
-
+#Main Menu Function
 def main_menu():
     print("Welcome to the Quiz Game!")
     print("Please select a quiz:")
     print("1. General Knowledge Quiz")
     print("2. Sports Quiz")
     print("3. Science Quiz")
+    print("4. Exit")
+
     while True:
         try:
-            choice = int(input("Enter your choice (1/2/3)")) #Input returns a string, so need to convert into an int
-
-            if choice in [1,2,3]:
-                return choice
+            choice = int(input("Enter your choice (1/2/3/4): "))
+            if choice in [1, 2, 3, 4]:
+                return choice  # Return the valid choice
             else:
-                print("Invalid choice. Please select 1, 2, or 3")
-
+                print("Invalid choice. Please select 1, 2, 3, or 4.")
         except ValueError:
             print("Invalid input. Please enter a number.")
-    
 
-quiz_choice = main_menu()
 
-quiz_choices = ["General Knowledge Quiz", "Sports Quiz", "Science Quiz"]
-selected_quiz = quiz_choices[int(quiz_choice) - 1]
-print(f"You selected {selected_quiz}, good luck!")
+#General Knowledge Quiz Function:
 
 def general_knowledge_quiz():
     print("Starting General Knowledge Quiz...")
@@ -104,26 +99,65 @@ def general_knowledge_quiz():
         else:
             print(f"Wrong! The correct answer is {q['answer']}")
     print(f"Quiz Complete! Your final score is {score}/{len(questions)}")
+    print("Returning to Main Menu...")
+    main_menu()  # Return to main menu
 
 
-
+#Sports Quiz Function:
 def sports_quiz():
     print("Starting Sports Quiz...")
-
-
-def science_quiz():
-    print("Starting Science Quiz...")
-
-def general_knowledge_quiz():
-    print("Starting General Knowledge Quiz...")
     questions = [
-        {
-            "question": "Where is the Mona Lisa?",
-            "options": ["A. London", "B. Madrid", "C. Paris", "D. Berlin"],
-            "answer": "C"
-        },
-        # Additional questions...
-    ]
+    {
+        "question": "Which country won the FIFA World Cup in 2018?",
+        "options": ["A. Brazil", "B. Germany", "C. France", "D. Argentina"],
+        "answer": "C"
+    },
+    {
+        "question": "In which sport is a 'love' score used?",
+        "options": ["A. Tennis", "B. Basketball", "C. Cricket", "D. Golf"],
+        "answer": "A"
+    },
+    {
+        "question": "How many players are on a basketball team on the court?",
+        "options": ["A. 5", "B. 7", "C. 11", "D. 6"],
+        "answer": "A"
+    },
+    {
+        "question": "Which country is known for inventing cricket?",
+        "options": ["A. Australia", "B. India", "C. England", "D. South Africa"],
+        "answer": "C"
+    },
+    {
+        "question": "How many rings are there on the Olympic flag?",
+        "options": ["A. 3", "B. 5", "C. 7", "D. 6"],
+        "answer": "B"
+    },
+    {
+        "question": "In which sport would you perform a slam dunk?",
+        "options": ["A. Volleyball", "B. Basketball", "C. Tennis", "D. Baseball"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the term for scoring three goals in a single soccer game?",
+        "options": ["A. Goal Streak", "B. Hat-trick", "C. Triple goal", "D. Strike"],
+        "answer": "B"
+    },
+    {
+        "question": "Who is known as the 'King of Football'?",
+        "options": ["A. Lionel Messi", "B. Cristiano Ronaldo", "C. Pele", "D. Maradona"],
+        "answer": "C"
+    },
+    {
+        "question": "Which sport uses a puck instead of a ball?",
+        "options": ["A. Hockey", "B. Baseball", "C. Ice Hockey", "D. Table Tennis"],
+        "answer": "C"
+    },
+    {
+        "question": "What does MLB stand for?",
+        "options": ["A. Major League Basketball", "B. Major League Baseball", "C. Master League Baseball", "D. Major Local Baseball"],
+        "answer": "B"
+    }
+]
 
     score = 0
 
@@ -134,10 +168,10 @@ def general_knowledge_quiz():
 
         while True:
             try:
-                user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+                user_answer = input("Your answer (A/B/C/D): ").strip().upper() #Removes any leading or trailing spaces, and converts the string into uppercase.
 
-                if user_answer in ["A", "B", "C", "D"]:
-                    break
+                if user_answer in ["A", "B", "C", "D"]: #Check if the input is valid
+                    break # Valid input break the loop
                 else:
                     print("Invalid choice. Please select A, B, C or D.")
             except ValueError:
@@ -145,23 +179,39 @@ def general_knowledge_quiz():
 
         if user_answer == q["answer"]:
             print("Correct!")
-            score += 1
+            score += 1 #Increment score for correct answer
         else:
             print(f"Wrong! The correct answer is {q['answer']}")
-
     print(f"Quiz Complete! Your final score is {score}/{len(questions)}")
+    print("Returning to Main Menu...")
+
+    main_menu()  # Return to main menu
+
+def science_quiz():
+    print("Starting Science Quiz...")
+    questions = [
 
 
-# Main Menu Loop for Multiple Attempts
-while True:
-    quiz_choice = main_menu()
+    ]
 
-    if quiz_choice == 1:
-        general_knowledge_quiz()
-    elif quiz_choice == 2:
-        sports_quiz()
-    elif quiz_choice == 3:
-        science_quiz()
-    else:
-        print("Thanks for playing! Goodbye!")
-        break
+
+
+
+
+
+    main_menu()  # Return to main menu
+
+
+if __name__ == "__main__":
+    while True:  # Main program loop
+        quiz_choice = main_menu()
+
+        if quiz_choice == 1:
+            general_knowledge_quiz()
+        elif quiz_choice == 2:
+            sports_quiz()
+        elif quiz_choice == 3:
+            science_quiz()
+        elif quiz_choice == 4:
+            print("Thanks for playing! Goodbye!")
+            break  # Exit the loop to end the program
